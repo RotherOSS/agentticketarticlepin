@@ -1,0 +1,43 @@
+span.PinnedArticle em {
+    display: none;
+}
+
+#ArticleTable.DataTable tbody td.UnreadArticles {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#ArticleTable.DataTable th.UnreadArticles,
+#ArticleTable.DataTable td.UnreadArticles {
+    width: 45px;
+    height: 20px;
+}
+
+#ArticleTable.DataTable tbody td.UnreadArticles .UnreadArticle {
+    grid-column: 1;
+}
+
+#ArticleTable.DataTable tbody td.UnreadArticles .ImportantArticles {
+    grid-column: 2;
+}
+
+#ArticleTable.DataTable tbody td.UnreadArticles .PinnedArticle {
+    grid-column: 3;
+}
+
+#ArticleTable.DataTable tbody td.UnreadArticles .UnreadArticle,
+#ArticleTable.DataTable tbody td.UnreadArticles .ImportantArticles,
+#ArticleTable.DataTable tbody td.UnreadArticles .PinnedArticle {
+    display: block;
+    grid-row: 1;
+    width: 15px;
+    height: 15px;
+    float: none;
+    margin: 0;
+    font-size: 13px;
+}
+
+#ArticleTable.DataTable tbody td.UnreadArticles i {
+    margin: 1px 1px 1px 1px;
+    text-align: center;
+}
