@@ -4,6 +4,8 @@
 // Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
 // Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
 // --
+// $origin: otobo - 88a5e33cdd6f88780e8bac6c132700a191d214cb - var/httpd/htdocs/js/Core.UI.Table.Sort.js
+// --
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
 // Foundation, either version 3 of the License, or (at your option) any later version.
@@ -98,8 +100,10 @@ Core.UI.Table.Sort = (function (TargetNS) {
                       nextAsc      : Core.Language.Translate('activate to apply an ascending sort'),
                       nextDesc     : Core.Language.Translate('activate to apply a descending sort'),
                       nextNone     : Core.Language.Translate('activate to remove the sort')
+// RotherOSS / AgentTicketArticlePin
                     },
                     widgets: ['staticRow']
+// EO AgentTicketArticlePin
                 });
 
                 if ($.isFunction(Finished)) {

@@ -4,6 +4,8 @@
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
 # Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
 # --
+# $origin: otobo - 88a5e33cdd6f88780e8bac6c132700a191d214cb - Kernel/Modules/AgentTicketZoom.pm
+# --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
 # Foundation, either version 3 of the License, or (at your option) any later version.
@@ -2541,6 +2543,8 @@ sub _ArticleTree {
                 );
             }
 
+# RotherOSS / AgentTicketArticlePin
+
             # show pinned flag
             if ( $ArticleImportantFlags{Pinned} ) {
                 $LayoutObject->Block(
@@ -2548,6 +2552,8 @@ sub _ArticleTree {
                     Data => {},
                 );
             }
+
+# EO AgentTicketArticlePin
 
             # always show archived tickets as seen
             if ( $NewArticle && $Ticket{ArchiveFlag} ne 'y' ) {
