@@ -2545,6 +2545,8 @@ sub _ArticleTree {
 
 # RotherOSS / AgentTicketArticlePin
 
+#TODO: when merging to Core, is there a way to make adding new flags easier?
+
             # show pinned flag
             if ( $ArticleImportantFlags{Pinned} ) {
                 $LayoutObject->Block(

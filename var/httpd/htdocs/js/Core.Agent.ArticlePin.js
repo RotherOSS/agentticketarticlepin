@@ -38,22 +38,20 @@ Core.Agent.ArticlePin = (function (TargetNS) {
 
         let $ArticleTable = $('#ArticleTable');
 
-        //make pinned list items static and assign them to the first rows in the table (handled by jquery-tablesorter widget staticRow)
+        // make pinned list items static and assign them to the first rows in the table (handled by jquery-tablesorter widget staticRow)
         let $PinnedArticleListItems = $('.PinnedArticle', $ArticleTable).closest('tr');
         $PinnedArticleListItems.each(function (index) {
             let $PinnedArticleListItem = $(this);
             $PinnedArticleListItem.addClass('static');
             $PinnedArticleListItem.attr('data-row-index', index);
         });
-        //$PinnedArticleListItems.trigger('staticRowsRefresh');
-        //$('thead th.No', $ArticleTable).trigger('sort');
         
 
         let PinnedArticleIDs = $('.No input.ArticleID', $PinnedArticleListItems).map(function() {
             return $(this).val();
         }).get();
 
-        //find containers of widgets of pinned articles by their article ID and add them to the start of the surrounding div
+        // find containers of widgets of pinned articles by their article ID and add them to the start of the surrounding div
         let $ArticleWidgetsContainer = $('#ArticleItems');
         let $PinnedArticles = $('> div', $ArticleWidgetsContainer).filter(function() {
             let ArticleID = $('a:first-child', $(this)).attr('name').slice(7);

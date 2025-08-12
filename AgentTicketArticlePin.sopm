@@ -9,11 +9,11 @@
     <Description Lang="en">Pin Articles to show them at the top of the list.</Description>
     <Description Lang="de">Ermöglicht das anheften von Artikeln an den Anfang der Artikelliste.</Description>
     <Filelist>
-        <File Permission="660" Location="Custom/Kernel/Modules/AgentTicketArticlePin.pm" />
-		<File Permission="660" Location="Custom/Kernel/Modules/AgentTicketZoom.pm" />
+        <File Permission="660" Location="Custom/Kernel/Modules/AgentTicketZoom.pm" />
 		<File Permission="660" Location="Custom/Kernel/Output/HTML/ArticleAction/ArticlePin.pm" />
+        <File Permission="660" Location="Custom/Kernel/Output/HTML/Templates/Standard/AgentTicketZoom.tt" />
+		<File Permission="660" Location="Kernel/Modules/AgentTicketArticlePin.pm" />
 		<File Permission="660" Location="Kernel/Config/Files/XML/ArticlePin.xml" />
-		<File Permission="660" Location="Kernel/Output/HTML/Templates/Standard/AgentTicketZoom.tt" />
 		<File Permission="660" Location="var/httpd/htdocs/js/thirdparty/jquery-tablesorter-2.28.14/widget-staticRow.min.js" />
 		<File Permission="660" Location="var/httpd/htdocs/js/Core.Agent.ArticlePin.js" />
 		<File Permission="660" Location="var/httpd/htdocs/js/Core.UI.Table.Sort.js" />
