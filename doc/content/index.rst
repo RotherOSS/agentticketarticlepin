@@ -7,7 +7,7 @@ Sacrifice to Sphinx
 
 Description
 ===========
-Pin Articles to show them at the top of the list.
+Pin Articles to show them at the top of the list in AgentTicketZoom.
 
 System requirements
 ===================
