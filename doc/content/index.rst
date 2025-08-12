@@ -7,7 +7,7 @@ Sacrifice to Sphinx
 
 Description
 ===========
-Pin Articles to show them at the top of the list in AgentTicketZoom.
+Pin Articles to show them at the top of the list in the Zoom View of the Agent Interface.
 
 System requirements
 ===================
@@ -26,12 +26,12 @@ Third-party software
 
 Usage
 =====
-To pin an article, use the "Pin" action available in the article actions menu. Pinned articles will be displayed at the top of the article list in the ticket view of the agent interface.
-A pinned article can be unpinned by selecting the "Unpin" action from the same menu.
+To pin an Article, navigate to the Zoom View of the Agent Interface and use the "Pin" action available in the Article Actions Menu. Pinned Articles will be displayed at the top of the Article list.
+A pinned Article can be unpinned by selecting the "Unpin" action from the same menu.
 
 .. note::
 
-   Articles are pinned for all agents, not just for the agent who pinned them. This means that if an article is pinned, it will remain at the top of the list for all agents viewing the ticket.
+   Articles are pinned for all Agents, not just for the Agent who pinned them. This means that if an Article is pinned, it will remain at the top of the list for all Agents viewing the Ticket.
 
 
 Configuration Reference
