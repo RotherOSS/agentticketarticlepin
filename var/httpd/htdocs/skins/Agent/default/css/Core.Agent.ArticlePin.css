@@ -2,6 +2,11 @@ span.PinnedArticle em {
     display: none;
 }
 
+.Pinned .WidgetSimple {
+    /*box-shadow: none;*/
+    border: 1px solid var(--colNotifyOK);
+}
+
 #ArticleTable.DataTable tbody td.UnreadArticles {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

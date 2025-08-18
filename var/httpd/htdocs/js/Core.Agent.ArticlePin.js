@@ -60,6 +60,7 @@ Core.Agent.ArticlePin = (function (TargetNS) {
 
         $PinnedArticles.detach();
         $PinnedArticles.prependTo($ArticleWidgetsContainer);
+        $PinnedArticles.addClass('Pinned');
 
     };
 
