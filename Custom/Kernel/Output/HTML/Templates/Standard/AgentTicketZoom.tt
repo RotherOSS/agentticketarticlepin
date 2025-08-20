@@ -467,9 +467,13 @@
                                         <i class="fa fa-star"></i>
                                     </span>
 [% RenderBlockEnd("TreeItemNewArticle") %]
-[% RenderBlockStart("TreeItemNoNewArticle") %]
-                                    <span class="NoContent"></span>
-[% RenderBlockEnd("TreeItemNoNewArticle") %]
+
+# RotherOSS / AgentTicketArticlePin
+#[% RenderBlockStart("TreeItemNoNewArticle") %]
+#                                    <span class="NoContent"></span>
+#[% RenderBlockEnd("TreeItemNoNewArticle") %]
+# EO AgentTicketArticlePin
+
                                 </td>
                                 <td class="Direction">
 [% RenderBlockStart("TreeItemDirectionIncoming") %]

@@ -2568,15 +2568,19 @@ sub _ArticleTree {
                 );
             }
 
-            # Bugfix for IE7: a table cell should not be empty
-            # (because otherwise the cell borders are not shown):
-            # we add an empty element here
-            else {
-                $LayoutObject->Block(
-                    Name => 'TreeItemNoNewArticle',
-                    Data => {},
-                );
-            }
+# RotherOSS / AgentTicketArticlePin
+#
+#            # Bugfix for IE7: a table cell should not be empty
+#            # (because otherwise the cell borders are not shown):
+#            # we add an empty element here
+#            else {
+#                $LayoutObject->Block(
+#                    Name => 'TreeItemNoNewArticle',
+#                    Data => {},
+#                );
+#            }
+#
+# EO AgentTicketArticlePin
 
             # Determine communication direction.
             if ( $Article{ChannelName} eq 'Internal' ) {

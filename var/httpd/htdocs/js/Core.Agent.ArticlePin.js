@@ -62,6 +62,11 @@ Core.Agent.ArticlePin = (function (TargetNS) {
         $PinnedArticles.prependTo($ArticleWidgetsContainer);
         $PinnedArticles.addClass('Pinned');
 
+        $('.Header h2', $PinnedArticles).each(function () {
+            let $Pin = $.parseHTML('<p title="[% Translate("Pinned") | html %]"><i class="fa fa-thumb-tack"></i><em>[% Translate("Pinned") | html %]</em></p>');
+            $(this).after($Pin);
+        });
+
     };
 
     Core.Init.RegisterNamespace(TargetNS, 'APP_MODULE_EARLY');

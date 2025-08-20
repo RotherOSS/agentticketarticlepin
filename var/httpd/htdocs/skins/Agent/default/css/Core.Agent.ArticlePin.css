@@ -1,48 +1,64 @@
+.Pinned .WidgetSimple .Header > p em,
 span.PinnedArticle em {
     display: none;
 }
 
 .Pinned .WidgetSimple {
-    /*box-shadow: none;*/
-    border: 1px solid var(--colNotifyOK);
+    box-shadow: inset 0 3px 4px 0 rgb( from var(--colShadowDark) r g b / 0.25);
 }
 
-#ArticleTable.DataTable tbody td.UnreadArticles {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.Pinned .WidgetSimple .Header > p {
+    line-height: 1;
+    box-sizing: border-box;
+    padding: 4px 3px 4px 6px;
+    margin: 0;
+    overflow: hidden;
+    font-size: 13px;
+    text-shadow: 1px 1px #fff;
+    color: var(--colTextDark);
 }
 
 #ArticleTable.DataTable th.UnreadArticles,
+#ArticleTable.DataTable th.UnreadArticles .tablesorter-header-inner {
+    width: calc( 16px * 3 + 8px); /* 3 icons + 2px margin */
+}
+
+#ArticleTable.DataTable th.UnreadArticles span.UnreadArticles{
+    width: 16px;
+    padding: 0 !important; /* important to override Core.Default.css important setting that should be changed */
+    margin: 0;
+}
+
 #ArticleTable.DataTable td.UnreadArticles {
-    width: 45px;
+    width: unset;
     height: 20px;
 }
 
-#ArticleTable.DataTable tbody td.UnreadArticles .UnreadArticle {
-    grid-column: 1;
+#ArticleTable.DataTable th.UnreadArticles a {
+    width: 100%;
+    height: 100%;
 }
 
-#ArticleTable.DataTable tbody td.UnreadArticles .ImportantArticles {
-    grid-column: 2;
+#ArticleTable.DataTable td.UnreadArticles,
+#ArticleTable.DataTable th.UnreadArticles a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 2px;
+    column-gap: 2px;
 }
 
-#ArticleTable.DataTable tbody td.UnreadArticles .PinnedArticle {
-    grid-column: 3;
-}
-
-#ArticleTable.DataTable tbody td.UnreadArticles .UnreadArticle,
-#ArticleTable.DataTable tbody td.UnreadArticles .ImportantArticles,
-#ArticleTable.DataTable tbody td.UnreadArticles .PinnedArticle {
+#ArticleTable.DataTable td.UnreadArticles span {
     display: block;
-    grid-row: 1;
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
     float: none;
     margin: 0;
     font-size: 13px;
+    text-align: center;
 }
 
-#ArticleTable.DataTable tbody td.UnreadArticles i {
-    margin: 1px 1px 1px 1px;
-    text-align: center;
+#ArticleTable.DataTable td.UnreadArticles span i {
+    margin: 0;
 }
