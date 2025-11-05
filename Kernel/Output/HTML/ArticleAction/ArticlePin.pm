@@ -54,21 +54,7 @@ sub CheckAccess {
         }
     }
 
-    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
-
-    # check if current user is owner or responsible
-    if (
-        $Param{UserID} == $Param{Ticket}->{OwnerID}
-        || (
-            $ConfigObject->Get('Ticket::Responsible')
-            && $Param{UserID} == $Param{Ticket}->{ResponsibleID}
-        )
-        )
-    {
-        return 1;
-    }
-
-    return 0;
+    return 1;
 }
 
 sub GetConfig {
