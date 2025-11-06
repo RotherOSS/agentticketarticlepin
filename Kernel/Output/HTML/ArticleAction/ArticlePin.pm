@@ -108,35 +108,37 @@ sub CheckAccess {
         $Permission = 1;
     }
 
-    if ( $Permission == 1 ) {
+    if ( $Permission == 1 ) { 
 
-        if ( $Config->{Permission} ) {
+        my $PinConfig = $ConfigObject->Get('Ticket::Frontend::AgentTicketArticlePin');
+
+        if ( $PinConfig->{Permission} ) { 
             my $Ok = $TicketObject->TicketPermission(
-                Type     => $Config->{Permission},
+                Type     => $PinConfig->{Permission},
                 TicketID => $Param{Ticket}->{TicketID},
                 UserID   => $Param{UserID},
                 LogNo    => 1,
-            );
+            );  
             return if !$Ok;
-        }
+        }   
 
-        if ( $Config->{RequiredLock} ) {
+        if ( $PinConfig->{RequiredLock} ) { 
             my $Locked = $TicketObject->TicketLockGet(
                 TicketID => $Param{Ticket}->{TicketID}
-            );
+            );  
             if ($Locked) {
                 my $AccessOk = $TicketObject->OwnerCheck(
                     TicketID => $Param{Ticket}->{TicketID},
                     OwnerID  => $Param{UserID},
-                );
+                );  
                 return if !$AccessOk;
-            }
-        }
+            } else {
+                return;
+            }   
+        }   
     } else {
-
         return;
-    }
-
+    }   
     return 1;
 }
 
