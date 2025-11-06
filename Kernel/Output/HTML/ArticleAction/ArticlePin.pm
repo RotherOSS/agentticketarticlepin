@@ -54,6 +54,89 @@ sub CheckAccess {
         }
     }
 
+    # Define action and get its frontend module registration.
+    my $Action = 'AgentTicketArticlePin';
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+    my $Config = $ConfigObject->Get('Frontend::Module')->{$Action};
+    my $TicketObject = $Kernel::OM->Get('Kernel::System::Ticket');
+
+    my $Permission = 0;
+
+    # check if module is registered
+    return if !$Config;
+
+    # check Acl
+    return if !$Param{AclActionLookup}->{$Action};
+
+    # Get group names from config.
+    my @GroupNames   = @{ $Config->{Group}   || [] };
+    my @GroupRoNames = @{ $Config->{GroupRo} || [] };
+
+    push (@GroupNames, @GroupRoNames);
+
+    # If access is restricted, allow access only if user has appropriate permissions in configured group(s).
+    if (@GroupNames) {
+        my $GroupObject = $Kernel::OM->Get('Kernel::System::Group');
+
+        # Get user groups, where the user has the appropriate permissions.
+        my %Groups = $GroupObject->GroupMemberList(
+            UserID => $Param{UserID},
+            Type   => 'rw',
+            Result => 'HASH',
+        );
+
+        GROUP:
+        for my $GroupName (@GroupNames) {
+            next GROUP if !$GroupName;
+
+            # Get the group ID.
+            my $GroupID = $GroupObject->GroupLookup(
+                Group => $GroupName,
+            );  
+            next GROUP if !$GroupID;
+
+            # Stop checking if membership in at least one group is found.
+            if ( $Groups{$GroupID} ) { 
+                $Permission = 1;
+                last GROUP;
+            }   
+        }   
+    }   
+
+    # Otherwise, always allow access.
+    else {
+        $Permission = 1;
+    }
+
+    if ( $Permission == 1 ) {
+
+        if ( $Config->{Permission} ) {
+            my $Ok = $TicketObject->TicketPermission(
+                Type     => $Config->{Permission},
+                TicketID => $Param{Ticket}->{TicketID},
+                UserID   => $Param{UserID},
+                LogNo    => 1,
+            );
+            return if !$Ok;
+        }
+
+        if ( $Config->{RequiredLock} ) {
+            my $Locked = $TicketObject->TicketLockGet(
+                TicketID => $Param{Ticket}->{TicketID}
+            );
+            if ($Locked) {
+                my $AccessOk = $TicketObject->OwnerCheck(
+                    TicketID => $Param{Ticket}->{TicketID},
+                    OwnerID  => $Param{UserID},
+                );
+                return if !$AccessOk;
+            }
+        }
+    } else {
+
+        return;
+    }
+
     return 1;
 }
 
