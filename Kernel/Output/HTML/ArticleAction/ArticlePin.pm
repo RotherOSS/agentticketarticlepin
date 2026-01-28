@@ -1,7 +1,7 @@
 # --
 # OTOBO is a web-based ticketing system for service organisations.
 # --
-# Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
+# Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -25,6 +25,7 @@ use Kernel::Language qw(Translatable);
 our @ObjectDependencies = (
     'Kernel::Config',
     'Kernel::Output::HTML::Layout',
+    'Kernel::System::Group',
     'Kernel::System::Log',
     'Kernel::System::Ticket',
     'Kernel::System::Ticket::Article',
@@ -55,9 +56,9 @@ sub CheckAccess {
     }
 
     # Define action and get its frontend module registration.
-    my $Action = 'AgentTicketArticlePin';
+    my $Action       = 'AgentTicketArticlePin';
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
-    my $Config = $ConfigObject->Get('Frontend::Module')->{$Action};
+    my $Config       = $ConfigObject->Get('Frontend::Module')->{$Action};
     my $TicketObject = $Kernel::OM->Get('Kernel::System::Ticket');
 
     my $Permission = 0;
@@ -72,7 +73,7 @@ sub CheckAccess {
     my @GroupNames   = @{ $Config->{Group}   || [] };
     my @GroupRoNames = @{ $Config->{GroupRo} || [] };
 
-    push (@GroupNames, @GroupRoNames);
+    push( @GroupNames, @GroupRoNames );
 
     # If access is restricted, allow access only if user has appropriate permissions in configured group(s).
     if (@GroupNames) {
@@ -92,53 +93,55 @@ sub CheckAccess {
             # Get the group ID.
             my $GroupID = $GroupObject->GroupLookup(
                 Group => $GroupName,
-            );  
+            );
             next GROUP if !$GroupID;
 
             # Stop checking if membership in at least one group is found.
-            if ( $Groups{$GroupID} ) { 
+            if ( $Groups{$GroupID} ) {
                 $Permission = 1;
                 last GROUP;
-            }   
-        }   
-    }   
+            }
+        }
+    }
 
     # Otherwise, always allow access.
     else {
         $Permission = 1;
     }
 
-    if ( $Permission == 1 ) { 
+    if ( $Permission == 1 ) {
 
         my $PinConfig = $ConfigObject->Get('Ticket::Frontend::AgentTicketArticlePin');
 
-        if ( $PinConfig->{Permission} ) { 
+        if ( $PinConfig->{Permission} ) {
             my $Ok = $TicketObject->TicketPermission(
                 Type     => $PinConfig->{Permission},
                 TicketID => $Param{Ticket}->{TicketID},
                 UserID   => $Param{UserID},
                 LogNo    => 1,
-            );  
+            );
             return if !$Ok;
-        }   
+        }
 
-        if ( $PinConfig->{RequiredLock} ) { 
+        if ( $PinConfig->{RequiredLock} ) {
             my $Locked = $TicketObject->TicketLockGet(
                 TicketID => $Param{Ticket}->{TicketID}
-            );  
+            );
             if ($Locked) {
                 my $AccessOk = $TicketObject->OwnerCheck(
                     TicketID => $Param{Ticket}->{TicketID},
                     OwnerID  => $Param{UserID},
-                );  
+                );
                 return if !$AccessOk;
-            } else {
+            }
+            else {
                 return;
-            }   
-        }   
-    } else {
+            }
+        }
+    }
+    else {
         return;
-    }   
+    }
     return 1;
 }
 

@@ -2,9 +2,9 @@
 // OTOBO is a web-based ticketing system for service organisations.
 // --
 // Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-// Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
+// Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
 // --
-// $origin: otobo - 88a5e33cdd6f88780e8bac6c132700a191d214cb - var/httpd/htdocs/js/Core.UI.Table.Sort.js
+// $origin: otobo - 6efdc7bf2a3325277cd79a60f0f2407f8ad59e87 - var/httpd/htdocs/js/Core.UI.Table.Sort.js
 // --
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -92,19 +92,20 @@ Core.UI.Table.Sort = (function (TargetNS) {
                     headers: Headers,
                     sortList: InitialSort,
                     textExtraction: CustomTextExtractor,
-                    language: {
-                      sortAsc      : Core.Language.Translate('Ascending sort applied, '),
-                      sortDesc     : Core.Language.Translate('Descending sort applied, '),
-                      sortNone     : Core.Language.Translate('No sort applied, '),
-                      sortDisabled : Core.Language.Translate('sorting is disabled'),
-                      nextAsc      : Core.Language.Translate('activate to apply an ascending sort'),
-                      nextDesc     : Core.Language.Translate('activate to apply a descending sort'),
-                      nextNone     : Core.Language.Translate('activate to remove the sort')
 // RotherOSS / AgentTicketArticlePin
-                    },
                     widgets: ['staticRow']
 // EO AgentTicketArticlePin
                 });
+
+                $Table.tablesorter.language = {
+                    sortAsc      : Core.Language.Translate('Ascending sort applied, '),
+                    sortDesc     : Core.Language.Translate('Descending sort applied, '),
+                    sortNone     : Core.Language.Translate('No sort applied, '),
+                    sortDisabled : Core.Language.Translate('sorting is disabled'),
+                    nextAsc      : Core.Language.Translate('activate to apply an ascending sort'),
+                    nextDesc     : Core.Language.Translate('activate to apply a descending sort'),
+                    nextNone     : Core.Language.Translate('activate to remove the sort')
+                };
 
                 if ($.isFunction(Finished)) {
                     $Table.on('sortEnd', Finished);

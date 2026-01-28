@@ -2,9 +2,9 @@
 # OTOBO is a web-based ticketing system for service organisations.
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
+# Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
 # --
-# $origin: otobo - 88a5e33cdd6f88780e8bac6c132700a191d214cb - Kernel/Modules/AgentTicketZoom.pm
+# $origin: otobo - 6efdc7bf2a3325277cd79a60f0f2407f8ad59e87 - Kernel/Modules/AgentTicketZoom.pm
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -950,7 +950,6 @@ sub MaskAgentZoom {
     # 1) if the $Page > 1, we need pagination
     # 2) if not, request $Limit + 1 articles. If $Limit + 1 are actually
     #    returned, pagination is necessary
-    my $Extra = $Page > 1 ? 0 : 1;
     my $NeedPagination;
 
     my @ArticleBox = $Self->_ArticleBoxGet(
@@ -1313,7 +1312,33 @@ sub MaskAgentZoom {
                     },
                 );
 
+                # create a map of priorities versus subitems based on the ClusterPriority of each subitem
+                # the settings key order prevails between subitems with equal ClusterPriority
+                # priorities are always appended a sequential suffix of two digits (800-01, 800-02, 800-03, etc.)
+                # this enforces distinct map keys even among subitems with the same ClusterPriority
+                my %PrioritySuffixes;
+                my %MapPriorityToSubItem;
                 for my $SubItem ( sort keys %{ $ZoomMenuItems{$Item}->{Items} } ) {
+                    my $ItemPriority = $ZoomMenuItems{$Item}->{Items}->{$SubItem}->{ClusterPriority};
+                    if ( !$PrioritySuffixes{$ItemPriority} ) {
+                        $PrioritySuffixes{$ItemPriority} = 1;
+                    }
+                    else {
+                        $PrioritySuffixes{$ItemPriority}++;
+                    }
+
+                    # enforce the two digits suffix, since 10 or more subitems are possible
+                    if ( $PrioritySuffixes{$ItemPriority} =~ /^\d$/ ) {
+                        $PrioritySuffixes{$ItemPriority} = "0" . $PrioritySuffixes{$ItemPriority};
+                    }
+
+                    my $PriorityKey = $ItemPriority . "-" . $PrioritySuffixes{$ItemPriority};
+                    $MapPriorityToSubItem{$PriorityKey} = $SubItem;
+                }
+
+                # render subitems according to the priorities map
+                for my $PriorityKey ( sort keys %MapPriorityToSubItem ) {
+                    my $SubItem = $MapPriorityToSubItem{$PriorityKey};
                     $LayoutObject->Block(
                         Name => 'TicketMenuSubContainerItem',
                         Data => $ZoomMenuItems{$Item}->{Items}->{$SubItem},
@@ -1550,6 +1575,7 @@ sub MaskAgentZoom {
     elsif ( IsHashRefWithData( $WidgetData{WidgetDynamicField} ) ) {
         DFVALUE:
         for my $FieldName ( keys $WidgetData{WidgetDynamicField}->%* ) {
+            next DFVALUE unless $WidgetData{WidgetDynamicField}{$FieldName};
             next DFVALUE unless $Ticket{"DynamicField_$FieldName"};
 
             $ShowWidget = 1;
@@ -2296,11 +2322,10 @@ sub MaskAgentZoom {
 sub _ArticleTree {
     my ( $Self, %Param ) = @_;
 
-    my %Ticket          = %{ $Param{Ticket} };
-    my %ArticleFlags    = %{ $Param{ArticleFlags} };
-    my @ArticleBox      = @{ $Param{ArticleBox} };
-    my $ArticleMaxLimit = $Param{ArticleMaxLimit};
-    my $ArticleID       = $Param{ArticleID};
+    my %Ticket       = %{ $Param{Ticket} };
+    my %ArticleFlags = %{ $Param{ArticleFlags} };
+    my @ArticleBox   = @{ $Param{ArticleBox} };
+    my $ArticleID    = $Param{ArticleID};
     my $TableClasses;
 
     # get layout object
@@ -2802,12 +2827,6 @@ sub _ArticleTree {
             ChatExternal
         );
 
-        my @TypesLeft = (
-            @TypesOutgoing,
-            @TypesInternal,
-            @TypesTicketAutoAction,
-        );
-
         my @TypesRight = (
             @TypesIncoming,
             @TypesTicketAction,
@@ -3236,13 +3255,10 @@ sub _ArticleItemSeen {
 sub _ArticleItem {
     my ( $Self, %Param ) = @_;
 
-    my %Ticket    = %{ $Param{Ticket} };
-    my %Article   = %{ $Param{Article} };
-    my %AclAction = %{ $Param{AclAction} };
+    my %Ticket  = %{ $Param{Ticket} };
+    my %Article = %{ $Param{Article} };
 
-    my $TicketObject  = $Kernel::OM->Get('Kernel::System::Ticket');
-    my $ArticleObject = $Kernel::OM->Get('Kernel::System::Ticket::Article');
-    my $LayoutObject  = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
 
     # show article actions
     my @MenuItems = $LayoutObject->ArticleActions(
