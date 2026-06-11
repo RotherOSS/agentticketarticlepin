@@ -39,14 +39,6 @@ The "Permission" and "RequiredLock" options in the configuration can be used to 
 Configuration Reference
 -----------------------
 
-Ticket::Frontend::AgentTicketArticlePin###Permission
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Defines the permission required to pin/unpin articles in the agent interface.
-
-Ticket::Frontend::AgentTicketArticlePin###RequiredLock
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Defines if a ticket lock is required to pin a ticket in the ticket zoom screen of the agent interface.
-
 Frontend::Agent::ModuleRegistration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -61,22 +53,29 @@ Loader::Module::AgentTicketZoom###010-ArticlePin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Loader module registration for the agent interface.
 
+Frontend::Agent::View::AgentTicketArticlePin
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Ticket::Frontend::AgentTicketArticlePin###Permission
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Defines the permission required to pin/unpin articles in the agent interface.
+
+Ticket::Frontend::AgentTicketArticlePin###RequiredLock
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Defines if a ticket lock is required to pin a ticket in the ticket zoom screen of the agent interface.
+
 Frontend::Agent::View::TicketZoom::ArticleAction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ticket::Frontend::Article::Actions###Chat
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Defines available article actions for Chat articles.
-
-Ticket::Frontend::Article::Actions###Email
+Ticket::Frontend::Article::Actions::Email###001-AgentTicketArticlePin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Defines available article actions for e-mail articles.
 
-Ticket::Frontend::Article::Actions###Internal
+Ticket::Frontend::Article::Actions::Internal###001-AgentTicketArticlePin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Defines available article actions for Internal articles.
 
-Ticket::Frontend::Article::Actions###Phone
+Ticket::Frontend::Article::Actions::Phone###001-AgentTicketArticlePin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Defines available article actions for Phone articles.
 
