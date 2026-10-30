@@ -7,7 +7,7 @@ Sacrifice to Sphinx
 
 Description
 ===========
-Pin Articles to show them at the top of the list in the Zoom View of the Agent Interface.
+Pin articles to show them at the top of the list in the zoom view of the agent interface.
 
 System requirements
 ===================
@@ -26,14 +26,14 @@ Third-party software
 
 Usage
 =====
-To pin an Article, navigate to the Zoom View of the Agent Interface and use the "Pin" action available in the Article Actions Menu. Pinned Articles will be displayed at the top of the Article list.
-A pinned Article can be unpinned by selecting the "Unpin" action from the same menu.
+To pin an article, navigate to the zoom view of the agent interface and use the "Pin" action available in the Article Actions menu. Pinned articles will be displayed at the top of the article list.
+A pinned article can be unpinned by selecting the "Unpin" action from the same menu.
 
 The "Permission" and "RequiredLock" options in the configuration can be used to control which agents are allowed to pin articles and whether a ticket lock is required to pin articles.
 
 .. note::
 
-   Articles are pinned for all Agents, not just for the Agent who pinned them. This means that if an Article is pinned, it will remain at the top of the list for all Agents viewing the Ticket.
+   Articles are pinned for all agents, not just for the agent who pinned them. This means that if an article is pinned, it will remain at the top of the list for all agents viewing the Ticket.
 
 
 Configuration Reference
@@ -73,11 +73,11 @@ Defines available article actions for e-mail articles.
 
 Ticket::Frontend::Article::Actions::Internal###001-AgentTicketArticlePin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Defines available article actions for Internal articles.
+Defines available article actions for internal articles.
 
 Ticket::Frontend::Article::Actions::Phone###001-AgentTicketArticlePin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Defines available article actions for Phone articles.
+Defines available article actions for phone articles.
 
 About
 =======
