@@ -6,8 +6,9 @@
     <Vendor>Rother OSS GmbH</Vendor>
     <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
-    <Description Lang="en">Pin Articles to show them at the top of the list.</Description>
+    <Description Lang="en">Pin articles to show them at the top of the list.</Description>
     <Description Lang="de">Ermöglicht das anheften von Artikeln an den Anfang der Artikelliste.</Description>
+    <Description Lang="hu">Bejegyzések kitűzése a lista tetején való megjelenítésükhöz.</Description>
     <Filelist>
         <File Permission="660" Location="Custom/Kernel/Modules/AgentTicketZoom.pm" />
         <File Permission="660" Location="Custom/Kernel/Output/HTML/Templates/Standard/AgentTicketZoom.tt" />
