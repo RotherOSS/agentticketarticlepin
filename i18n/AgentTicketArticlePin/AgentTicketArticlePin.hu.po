@@ -1,0 +1,48 @@
+# Hungarian translations for AgentTicketArticlePin.
+# Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
+# This file is distributed under the same license as the AgentTicketArticlePin package.
+#
+# Balázs Úr <balazs@urbalazs.hu>, 2026.
+msgid ""
+msgstr ""
+"Project-Id-Version: AgentTicketArticlePin 11.0.3\n"
+"Report-Msgid-Bugs-To: https://github.com/RotherOSS/agentticketarticlepin/"
+"issues\n"
+"POT-Creation-Date: 2026-11-17 07:31+0000\n"
+"PO-Revision-Date: 2026-11-17 08:33+0100\n"
+"Last-Translator: Balázs Úr <balazs@urbalazs.hu>\n"
+"Language-Team: Hungarian <https://translate.otobo.org/projects/otobo-11-0/"
+"addons/manuals/agentticketarticlepin/hu/>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 26.08.1\n"
+
+#. Template: AgentTicketZoom
+msgid "Pinned"
+msgstr "Kitűzve"
+
+#. Perl Module: Kernel/Output/HTML/ArticleAction/ArticlePin.pm
+msgid "Pin"
+msgstr "Kitűzés"
+
+#. Perl Module: Kernel/Output/HTML/ArticleAction/ArticlePin.pm
+msgid "Unpin"
+msgstr "Kitűzés megszüntetése"
+
+#. SysConfig
+msgid ""
+"Defines if a ticket lock is required to pin a ticket in the ticket zoom "
+"screen of the agent interface."
+msgstr ""
+"Meghatározza, hogy jegyzárolás szükséges egy jegy kitűzéséhez az ügyintézői "
+"felület jegynagyítás képernyőjén."
+
+#. SysConfig
+msgid ""
+"Defines the permission required to pin/unpin articles in the agent interface."
+msgstr ""
+"Meghatározza a bejegyzések kitűzéséhez vagy a kitűzés megszüntetéséhez "
+"szükséges jogosultságot az ügyintézői felületen."
