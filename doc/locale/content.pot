@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Documentation dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-08 13:18+0000\n"
+"POT-Creation-Date: 2026-11-17 08:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgid "Description"
 msgstr ""
 
 #: ../content/index.rst:7
-msgid "Pin Articles to show them at the top of the list in the Zoom View of the Agent Interface."
+msgid "Pin articles to show them at the top of the list in the zoom view of the agent interface."
 msgstr ""
 
 #: ../content/index.rst:10
@@ -58,7 +58,7 @@ msgid "Usage"
 msgstr ""
 
 #: ../content/index.rst:26
-msgid "To pin an Article, navigate to the Zoom View of the Agent Interface and use the \"Pin\" action available in the Article Actions Menu. Pinned Articles will be displayed at the top of the Article list. A pinned Article can be unpinned by selecting the \"Unpin\" action from the same menu."
+msgid "To pin an article, navigate to the zoom view of the agent interface and use the \"Pin\" action available in the article actions menu. Pinned articles will be displayed at the top of the article list. A pinned article can be unpinned by selecting the \"Unpin\" action from the same menu."
 msgstr ""
 
 #: ../content/index.rst:29
@@ -66,7 +66,7 @@ msgid "The \"Permission\" and \"RequiredLock\" options in the configuration can 
 msgstr ""
 
 #: ../content/index.rst:33
-msgid "Articles are pinned for all Agents, not just for the Agent who pinned them. This means that if an Article is pinned, it will remain at the top of the list for all Agents viewing the Ticket."
+msgid "Articles are pinned for all agents, not just for the agent who pinned them. This means that if an article is pinned, it will remain at the top of the list for all agents viewing the ticket."
 msgstr ""
 
 #: ../content/index.rst:36

@@ -12,6 +12,8 @@
     <Filelist>
         <File Permission="660" Location="Custom/Kernel/Modules/AgentTicketZoom.pm" />
         <File Permission="660" Location="Custom/Kernel/Output/HTML/Templates/Standard/AgentTicketZoom.tt" />
+        <File Permission="660" Location="Kernel/Language/de_AgentTicketArticlePin.pm" />
+        <File Permission="660" Location="Kernel/Language/hu_AgentTicketArticlePin.pm" />
         <File Permission="660" Location="Kernel/Output/HTML/ArticleAction/ArticlePin.pm" />
         <File Permission="660" Location="Kernel/Modules/AgentTicketArticlePin.pm" />
         <File Permission="660" Location="Kernel/Config/Files/XML/ArticlePin.xml" />
